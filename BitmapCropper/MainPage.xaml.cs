@@ -29,7 +29,6 @@ namespace BitmapCropper
     public sealed partial class MainPage : Page
     {
         #region Declarations
-        WriteableBitmap writableBitmap; //Выбранная фотография
         StorageFile imageFile; //Содержит выбранную фотографию 
         #endregion
 
@@ -56,7 +55,7 @@ namespace BitmapCropper
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            await WriteImageToFileAsync(imageFile, writableBitmap);
+            await WriteImageToFileAsync(imageFile);
         }
 
         private async void BtnSaveAs_Click(object sender, RoutedEventArgs e)
@@ -64,7 +63,7 @@ namespace BitmapCropper
             //Файл в который я хочу записать фотографию
             StorageFile imageFile = await GetSaveFilePicker();
 
-            await WriteImageToFileAsync(imageFile, writableBitmap);
+            await WriteImageToFileAsync(imageFile);
         }
         #endregion
 
@@ -89,7 +88,7 @@ namespace BitmapCropper
         /// <param name="bitmapForWrite">
         /// Фотографию которую нужно записать в файл
         /// </param>
-        private async Task WriteImageToFileAsync(StorageFile imageFile, WriteableBitmap bitmapForWrite)
+        private async Task WriteImageToFileAsync(StorageFile imageFile)
         {
             //Открываем поток файла в который мы хотим записать изменённую фотографию
             //https://docs.microsoft.com/en-gb/windows/uwp/audio-video-camera/imaging#save-a-softwarebitmap-to-a-file-with-bitmapencoder
