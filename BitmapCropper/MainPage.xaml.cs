@@ -46,6 +46,9 @@ namespace BitmapCropper
             if ((imageFile = await PickImage()) == null) return;
 
             await ImageHolderEx.LoadImageFromFile(imageFile);
+
+            btnSave.IsEnabled = true;
+            btnSaveAs.IsEnabled = true;
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
